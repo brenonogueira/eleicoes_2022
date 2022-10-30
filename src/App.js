@@ -2,6 +2,7 @@ import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Avatar, Card, CardActionArea, CardContent, Typography } from '@mui/material';
+import NoSleep from "nosleep.js";
 
 function App() {
   const [resultados, setResultados] = useState()
@@ -20,6 +21,26 @@ function App() {
     setInterval(() => {
       getResultado()
     }, 1000);
+  }, []);
+
+  useEffect(() => {
+    let isEnableNoSleep = false;
+    const noSleep = new NoSleep();
+    document.addEventListener(
+      `click`,
+      function enableNoSleep() {
+        document.removeEventListener(`click`, enableNoSleep, false);
+        noSleep.enable();
+        isEnableNoSleep = true;
+        // alert(`Boa`);
+      },
+      false
+    );
+    return () => {
+      if (isEnableNoSleep) {
+        noSleep.disable();
+      }
+    };
   }, []);
 
   // useEffect(() => {
