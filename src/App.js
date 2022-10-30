@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Avatar, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Avatar, Card, CardActionArea, CardContent, Typography } from '@mui/material';
 
 function App() {
   const [resultados, setResultados] = useState()
